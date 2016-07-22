@@ -1,7 +1,14 @@
+import java.util.Scanner;
+
 public class Checkers {
 
   public static void main(String [] args) {
-    int[][] gameBoard = {
+    GameBoard gameBoard = new GameBoard();
+    
+    gameBoard.displayBoard();
+   /* 
+    int[][] gameBoard = 
+    {
       {-1, 1, -1, 1, -1, 1, -1, 1},
       {1, -1, 1, -1, 1, -1, 1, -1},
       {-1, 1, -1, 1, -1, 1, -1, 1},
@@ -11,8 +18,9 @@ public class Checkers {
       {-1, 2, -1, 2, -1, 2, -1, 2},
       {2, -1, 2, -1, 2, -1, 2, -1},
     };
+    */
 
-    displayBoard(gameBoard);
+    //displayBoard(gameBoard);
   } // end of main
 
   /*
@@ -40,7 +48,6 @@ public class Checkers {
     int row = sc.nextInt();
     int col = sc.nextInt();
 
-    if(gameBoard
   }
 
 }
