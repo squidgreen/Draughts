@@ -33,22 +33,28 @@ public class GameBoard {
 
   /*
    * name: displayBoard
-   * description: Print the current board to stdout row by row, comma separated
+   * description: Print the current board to stdout row by row, space separated
    */
   public void displayBoard() {
-    System.out.print("  ");
+    System.out.print("   "); // 3 spaces of padding for column numbers
     for(int k = 0; k < DIMENSION; k++) {
-//      System.out.print(" [" + k + "]");
+      System.out.print("  " + k); // 2 spaces in between each column number
     }
     System.out.println();
 
     for(int i = 0; i < DIMENSION; i++) {
       System.out.print("[" + i + "] ");
       for(int j = 0; j < DIMENSION; j++) {
-        System.out.print("[" + board[i][j] + "]");
+        int val = board[i][j];
+        if(val >= 0) { // non-negative numbers are preceded with a space
+          System.out.print(" " + val);
+        } else {
+          System.out.print(val);
+        }
+        //System.out.print(board[i][j]);
 
         if(j < 7) {
-          System.out.print(", ");
+          System.out.print(" ");
         }
       }
       System.out.println(); // print each row on a new line
