@@ -45,13 +45,13 @@ public class GameBoard {
     for(int i = 0; i < DIMENSION; i++) {
       System.out.print("[" + i + "] ");
       for(int j = 0; j < DIMENSION; j++) {
-        int val = board[i][j];
+        int val = board[i][j]; // value of current piece
+
         if(val >= 0) { // non-negative numbers are preceded with a space
           System.out.print(" " + val);
         } else {
           System.out.print(val);
         }
-        //System.out.print(board[i][j]);
 
         if(j < 7) {
           System.out.print(" ");
@@ -75,6 +75,25 @@ public class GameBoard {
 
     // compare int at given position in grid to player's number
     System.out.println("Piece selected belongs to player " + board[row][col]);
+
+    return true;
+  }
+
+  /*
+   * name: selectLocation
+   * description: The location to move a previously selected piece.
+   * parameters: int row/int col - the row and col of the pieces original
+   *             location
+   */
+  public boolean selectLocation(int row, int col) {
+    System.out.println("Enter the coordinates of where to move the piece:");
+
+    Scanner input = new Scanner(System.in);
+    int moveRow = input.nextInt();
+    int moveCol = input.nextInt();
+    
+    board[moveRow][moveCol] = board[row][col]; // fill new space with old value
+    board[row][col] = 0; // mark previous space as empty
 
     return true;
   }
