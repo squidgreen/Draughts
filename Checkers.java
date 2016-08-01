@@ -6,6 +6,9 @@ public class Checkers {
     GameBoard gameBoard = new GameBoard();
     
     gameBoard.displayBoard();
+
+    gameBoard.selectPiece();
+    gameBoard.selectLocation();
    /* 
     int[][] gameBoard = 
     {
