@@ -18,7 +18,7 @@ class Piece {
   }
 
   public Piece(int x, int y, int team) {
-    Piece(new Pair(x, y), team); 
+    this(new Pair(x, y), team); 
   }
 
   private void setLoc(Pair location) {
@@ -27,5 +27,13 @@ class Piece {
 
   private void setTeam(int team) {
     this.team = team;
+  }
+
+  public Pair getLoc() {
+    return this.loc;
+  }
+
+  public int getTeam() {
+    return this.team;
   }
 }

@@ -1,17 +1,7 @@
 public class Checkers {
 
   public static void main(String [] args) {
-    int[][] gameBoard = {
-      {-1, 1, -1, 1, -1, 1, -1, 1},
-      {1, -1, 1, -1, 1, -1, 1, -1},
-      {-1, 1, -1, 1, -1, 1, -1, 1},
-      {0, -1, 0, -1, 0, -1, 0, -1},
-      {-1, 0, -1, 0, -1, 0, -1, 0},
-      {2, -1, 2, -1, 2, -1, 2, -1},
-      {-1, 2, -1, 2, -1, 2, -1, 2},
-      {2, -1, 2, -1, 2, -1, 2, -1},
-    };
-
+    GameBoard placeholder = new GameBoard();
     displayBoard(gameBoard);
   } // end of main
 
