@@ -3,8 +3,8 @@ class Pair {
   private int y;
 
   public Pair() {
-    setX(0);
-    setY(0);
+    this.setX(0);
+    this.setY(0);
   }
 
   /*
@@ -12,15 +12,31 @@ class Pair {
    * description: Constructs a Pair object with the given parameters
    */
   public Pair(int x, int y) {
-    setX(x);
-    setY(y);
+    this.setX(x);
+    this.setY(y);
   }
 
-  private setX(int x) {
+  /*
+   * description: Copy Constructor
+   */
+  public Pair(Pair other) {
+    this.setX(other.getX());
+    this.setY(other.getY());
+  }
+
+  private void setX(int x) {
     this.x = x;
   }
 
-  private setY(int y) {
+  private void setY(int y) {
     this.y = y;
+  }
+
+  public int getX() {
+    return this.x;
+  }
+
+  public int getY() {
+    return this.y;
   }
 }
