@@ -1,25 +1,9 @@
+import java.util.Scanner;
+
 public class GameBoard {
   Piece[][] board;
   int dimension = 8; // the width and height of the board
   private static final int INVALID_POS = -1; // invalid board position
-
-  /*
-  public void setupBoard() {
-    board = new Piece[][] {
-      {new Piece(0, 0, -1), new Piece(0, 1, 1), new Piece(0, 2, -1), 
-       new Piece(0, 3, 1), new Piece(0, 4, -1), new Piece(0, 5, 1), 
-       new Piece(0, 6, -1), new Piece(0, 7, 1)},
-      {new Piece(1, 0, 1), new Piece(1, 1, -1), new Piece(1, 2, 1)
-       new Piece(1, 3, -1), new Piece(1, 4, 1), new Piece(1, 5, -1),
-       new Piece(1, 6, 1), new Piece(1, 7, -1)},
-      {new Piece(2, 0, -1), new Piece(2, 1, 1), new Piece(2, 2, -1),
-       new Piece(2, 3, 1), new Piece(2, 4, -1), new Piece(2, 5, 1),
-       new Piece(2, 6, -1), new Piece(2, 7, 1)},
-      {new Piece(3, 0, 0), new Piece(3, 1, -1), new Piece(3, 2, 0),
-       new 
-    };
-  }
-  */
 
   /*
    * future --> Later this may take in a dimension for board size.
@@ -44,7 +28,7 @@ public class GameBoard {
 
     // Rows three through four - Alternate between empty space and invalid
     // board position markers
-    int ticker = 0; // 
+    int ticker = 0; // To flip between each board position's marker
     for(int row = 3; row < 5; row++) {
       for(int col = 0; col < dimension; col++) {
         if(ticker % 2 == 0) {
@@ -99,13 +83,47 @@ public class GameBoard {
           System.out.print(val);
         }
 
-        System.out.print(" "); // TODO find out what this is for haha
-        //System.out.print(board[row][col].getTeam() + " "); // print team number
+        System.out.print(" "); // Print a space between each Piece
       }
       System.out.println(); // Print each row on a new line
     }
 
   } // end displayBoard
+
+  /**
+   * name: selectPiece
+   * description: Asks the user to input a board position and ensures that
+   *              position contains a piece belonging to that player.
+   */
+  public Piece selectPiece(int playersTeam) {
+    Scanner sc = new Scanner(System.in); // Grab input from the user
+    int teamChoice = 0; // Team of piece chosen by user
+    int row; // Row of piece chosen
+    int col; // Column of piece chosen
+
+    // Prompt the user until they chose a piece on their team
+    while(teamChoice != playersTeam) {
+      System.out.println("Enter the position of the piece you want to move:");
+
+      row = sc.nextInt();
+      col = sc.nextInt();
+
+      teamChoice = board[row][col].getTeam();
+
+      if(teamChoice != playersTeam) {
+        System.out.println("That is not your piece!\n");
+      } else {
+        return board[row][col]; // Return the player's piece
+      }
+    }
+
+    return new Piece(-1,-1,-1); // TODO Invalid piece - 
+  }
+
+  /* 
+   * TODO movement -> relies on selecting a piece and choosing where to move
+   * it. method written in here and called from Checkers class.
+   */
 
   /* 
    * make its own class. won't need to pass the board around to everything.
