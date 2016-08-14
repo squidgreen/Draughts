@@ -1,11 +1,15 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class GameBoard {
   Piece[][] board;
   int dimension = 8; // the width and height of the board
-  private static final int INVALID_POS = -1; // invalid board position
+  private static final int INVALID_POS = -1;  // invalid board position
+  private static final int EMPTY_POS = 0;     // empty board position
+  private static final int PLAYER_ONE = 1;
+  private static final int PLAYER_TWO = 2;
 
-  /*
+  /**
    * future --> Later this may take in a dimension for board size.
    * name: setupBoard()
    * description: Allocates and initializes memory for the board object.
@@ -15,8 +19,10 @@ public class GameBoard {
 
     /* Initialize */
 
-    // Rows zero through two - Alternate between player one's number and
-    // invalid board position markers
+    /*
+     * Rows zero through two - Alternate between player one's number and
+     * invalid board position markers
+     */
     int team = -1;
     for(int row = 0; row < 3; row++) {
       for(int col = 0; col < dimension; col++) {
@@ -26,13 +32,15 @@ public class GameBoard {
       team *= -1;
     }
 
-    // Rows three through four - Alternate between empty space and invalid
-    // board position markers
+    /*
+     * Rows three through four - Alternate between empty space and invalid
+     * board position markers
+     */
     int ticker = 0; // To flip between each board position's marker
     for(int row = 3; row < 5; row++) {
       for(int col = 0; col < dimension; col++) {
         if(ticker % 2 == 0) {
-          team = 0;
+          team = EMPTY_POS;
         } else {
           team = INVALID_POS;
         }
@@ -117,7 +125,66 @@ public class GameBoard {
       }
     }
 
-    return new Piece(-1,-1,-1); // TODO Invalid piece - 
+    return new Piece(-1,-1,-1); // TODO Invalid piece - find a better way to do
+    // this than returning some bogus piece. rework logic
+  }
+
+  /**
+   * name: movePiece
+   * description: Move a given piece to a location the player chooses
+   *
+   * plan: TODO 
+   */
+  public void movePiece(Piece mover) {
+    ArrayList<Pair> validLocs = new ArrayList<Pair>();
+    int row = mover.getLoc().getX(); // row and col location of piece to be moved
+    int col = mover.getLoc().getY();
+
+    if(mover.getTeam() == PLAYER_ONE) {
+      // spaceA is down and left of any piece player 1 wants to move
+      int spaceARow = row + 1; // row of spaceA
+      int spaceACol = col - 1; // column of spaceA
+
+      // spaceB is down and right of any piece player 1 wants to move
+      int spaceBRow = row + 1; // row of spaceB
+      int spaceBCol = col + 1; // column of spaceB
+
+      // check if position given is within board boundaries
+      if(Utils.inRange(spaceARow, 0, dimension) &&
+         Utils.inRange(spaceACol, 0, dimension)) {
+
+        // if position is empty, add as a valid location to move the piece
+        if(board[spaceARow][spaceACol].getTeam() == EMPTY_POS) {
+
+          validLocs.add(new Pair(spaceARow, spaceACol); 
+        } else if(board[spaceA.getX()][spaceA.getY()].getTeam() == PLAYER_TWO) { 
+          if(board[spaceA.getX
+          // if the position holds a piece of the opposite team,
+        //we need to check behind the piece for an empty position to jump to
+
+        }
+      }
+      
+      if(Utils.inRange(spaceB.getX(), 0, dimension) &&
+         Utils.inRange(spaceB.getY(), 0, dimension)) {
+
+        if(board[spaceB.getX()][spaceB.getY()].getTeam() == EMPTY_POS) {
+          validLocs.add(spaceB);
+        } else if( ) { //check for opposing player's piece
+
+        }
+      }
+
+        System.out.println("Valid locations");
+        for(int i = 0; i < 2; i++) {
+          System.out.println("\n\n" + validLocs.get(i).getX() + ", " + 
+                              validLocs.get(i).getY());
+        }
+      
+
+    } else if(mover.getTeam() == PLAYER_TWO) {
+
+    }
   }
 
   /* 
