@@ -17,8 +17,8 @@ class Piece {
     this.setTeam(team);
   }
 
-  public Piece(int x, int y, int team) {
-    this(new Pair(x, y), team); 
+  public Piece(int col, int row, int team) {
+    this(new Pair(col, row), team); 
   }
 
   private void setLoc(Pair location) {
