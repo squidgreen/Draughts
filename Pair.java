@@ -24,6 +24,21 @@ class Pair {
     this.setY(other.getY());
   }
 
+  @Override
+  public boolean equals(Object obj) {
+    System.out.println("Called!");
+
+    // if obj is null or is not of type Rational
+    if(obj == null || !(obj instanceof Pair)) {
+      return false;
+    } else if(this.getX() == ((Pair)obj).getX() && 
+      this.getY() == ((Pair)obj).getY()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   private void setX(int x) {
     this.x = x;
   }
@@ -38,5 +53,12 @@ class Pair {
 
   public int getY() {
     return this.y;
+  }
+
+  /*
+   * Display the contents of the Pair object
+   */
+  public void print() {
+    System.out.print("x: " + this.getX() + " y: " + this.getY());
   }
 }
